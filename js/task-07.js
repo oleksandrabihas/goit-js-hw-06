@@ -3,7 +3,8 @@
 const fontSizeControlInput = document.querySelector("#font-size-control");
 const text = document.querySelector('#text')
 
-
+fontSizeControlInput.value = fontSizeControlInput.min;
+text.style.fontSize = `${fontSizeControlInput.value}px`;
 fontSizeControlInput.addEventListener('input', (event) => {  
     text.style.fontSize = `${fontSizeControlInput.value}px`;
 })

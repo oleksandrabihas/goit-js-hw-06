@@ -19,9 +19,10 @@
 const allList = document.querySelectorAll(".item");
 console.log(`Number of categories: ${allList.length}`);
 
+
 allList.forEach(elem => {
     console.log(`Category: ${elem.firstElementChild.textContent}`);
-    const smallList = elem.lastElementChild.querySelectorAll('li');
+    const smallList = elem.lastElementChild.children;
     console.log(`Elements: ${smallList.length}`)
  });
 

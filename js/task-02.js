@@ -14,21 +14,14 @@ const ingredients = [
 // Після чого, вставить усі <li> за одну операцію у список ul#ingredients.
 
 
-// const ingredientsList = document.querySelector("#ingredients");
-// const ingredientsItems = 
-//   ingredients.map(elem => {
-//   const itemIngredient = document.createElement("li");
-//   itemIngredient.textContent = elem;
-//   itemIngredient.classList.add('item');
-//   return itemIngredient;
-//   });
-
 const ingredientsList = document.querySelector("#ingredients");
-  const ingredientsItems = ingredients.map(elem => {
+
+const ingredientsItems = ingredients.map(elem => {
   const itemIngredient = document.createElement("li");
   itemIngredient.textContent = elem;
-  itemIngredient.classList.add("item");
-  ingredientsList.append(itemIngredient);
+  itemIngredient.classList.add("item"); 
+  return itemIngredient;
+});
+  ingredientsList.append(...ingredientsItems);
 
-    return ingredientsList;
-  });
+

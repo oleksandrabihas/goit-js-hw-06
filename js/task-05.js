@@ -2,8 +2,12 @@
 
 const textInput = document.querySelector("#name-input");
 const textOuput = document.querySelector("#name-output");
+const initialText = textOuput.textContent;
 
 textInput.addEventListener("input", (event) => {
-  textOuput.textContent = event.currentTarget.value;
-
+  if (textInput.value.trim() !== '') {
+    textOuput.textContent = event.currentTarget.value.trim();
+  } else {
+   textOuput.textContent = initialText;
+  }
 });

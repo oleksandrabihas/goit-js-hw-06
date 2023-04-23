@@ -8,9 +8,14 @@ const input = document.querySelector("input");
 const btnCreate = document.querySelector("button[data-create]");
 const btnDestroy = document.querySelector("button[data-destroy]");
 const boxes = document.querySelector("#boxes");
+const createdBoxes = [];
 
 btnCreate.addEventListener("click", onCreateBtnClick);
-btnDestroy.addEventListener("click", () => (boxes.innerHTML = ""));
+btnDestroy.addEventListener("click", () => {
+  boxes.innerHTML = "";
+  input.value = "";
+  createdBoxes.length = 0;
+});
 
 function onCreateBtnClick() {
   const amount = +input.value;
@@ -18,17 +23,18 @@ function onCreateBtnClick() {
 }
 
 function createBoxes(amount) {
-  let size = 30;
+  if (+input.value >= +input.min && +input.value <= +input.max) {
+    let size = 30;
 
-  for (let i = 0; i < amount; i++) {
-    const box = document.createElement("div");
+    for (let i = 0; i < amount; i += +input.step) {
+      const box = document.createElement("div");
 
-    box.style.width = `${size}px`;
-    box.style.height = `${size}px`;
-    box.style.backgroundColor = getRandomHexColor();
-
-    boxes.appendChild(box);
-
-    size += 10;
+      box.style.width = `${size}px`;
+      box.style.height = `${size}px`;
+      box.style.backgroundColor = getRandomHexColor();
+      size += 10;
+      createdBoxes.push(box);
+    }
+    boxes.append(...createdBoxes);
   }
 }
